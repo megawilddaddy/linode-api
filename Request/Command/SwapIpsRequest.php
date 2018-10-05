@@ -1,8 +1,9 @@
 <?php
 
-namespace Megawilddaddy\Linode\Request;
+namespace Megawilddaddy\Linode\Request\Command;
 
 use Megawilddaddy\Linode\Node;
+use Megawilddaddy\Linode\Request\RequestInterface;
 
 class SwapIpsRequest implements RequestInterface
 {
@@ -24,7 +25,7 @@ class SwapIpsRequest implements RequestInterface
 
     public function getUrl(): string
     {
-        return sprintf('https://api.linode.com/v4/linode/instances/%s/reboot', $this->getNode()->getLinodeId());
+        return 'https://api.linode.com/v4/networking/ipv4/assign';
     }
 
     public function getMethod(): string
@@ -32,13 +33,13 @@ class SwapIpsRequest implements RequestInterface
         return 'POST';
     }
 
-    public function getParams(): ?array
+    public function getParams(): ?string
     {
         return json_encode([
             'region' => $this->node1->getRegion(),
             'assignments' => [
-                ['address' => $this->node1->getMainIp(), 'linode_id' => $this->node2->getLinodeId()],
-                ['address' => $this->node2->getMainIp(), 'linode_id' => $this->node1->getLinodeId()],
+                ['address' => $this->node1->getExternalIp(), 'linode_id' => $this->node2->getLinodeId()],
+                ['address' => $this->node2->getExternalIp(), 'linode_id' => $this->node1->getLinodeId()],
             ]
         ]);
     }

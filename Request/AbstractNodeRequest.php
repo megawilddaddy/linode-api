@@ -11,6 +11,10 @@ abstract class AbstractNodeRequest
      */
     private $node;
 
+    /**
+     * AbstractNodeRequest constructor.
+     * @param Node $node
+     */
     public function __construct(Node $node)
     {
         $this->node = $node;
@@ -32,6 +36,10 @@ abstract class AbstractNodeRequest
         $this->node = $node;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function buildResult($response)
     {
         return $response;

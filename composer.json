@@ -18,7 +18,8 @@
     },
     "target-dir": "Megawilddaddy/Linode",
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "psr/log": "^1.0"
     },
     "minimum-stability": "stable"
 }

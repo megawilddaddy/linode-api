@@ -88,9 +88,12 @@ class Node
         $this->region = $region;
     }
 
-    public function getMainIp()
+    public function getExternalIp()
     {
-        var_dump($this->getIps());
-        die();
+        foreach ($this->getIps() as $ip) {
+            if (substr($ip, 0, 7) != '192.168') {
+                return $ip;
+            }
+        }
     }
 }

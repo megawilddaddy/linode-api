@@ -1,8 +1,6 @@
 <?php
 
-namespace Megawilddaddy\Linode;
-
-use Megawilddaddy\Linode\Request\RequestInterface;
+namespace Megawilddaddy\Linode\Request;
 
 class RequestManager
 {

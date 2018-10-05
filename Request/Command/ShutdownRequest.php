@@ -1,6 +1,9 @@
 <?php
 
-namespace Megawilddaddy\Linode\Request;
+namespace Megawilddaddy\Linode\Request\Command;
+
+use Megawilddaddy\Linode\Request\AbstractNodeRequest;
+use Megawilddaddy\Linode\Request\RequestInterface;
 
 class ShutdownRequest extends AbstractNodeRequest implements RequestInterface
 {
@@ -15,7 +18,7 @@ class ShutdownRequest extends AbstractNodeRequest implements RequestInterface
         return 'POST';
     }
 
-    public function getParams(): ?array
+    public function getParams(): ?string
     {
         return null;
     }

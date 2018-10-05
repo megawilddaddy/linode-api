@@ -1,9 +1,10 @@
 <?php
 
-namespace Megawilddaddy\Linode\Request;
+namespace Megawilddaddy\Linode\Request\Command;
 
 use Megawilddaddy\Linode\Node;
 use Megawilddaddy\Linode\NodeList;
+use Megawilddaddy\Linode\Request\RequestInterface;
 
 class ListNodesRequest implements RequestInterface
 {
@@ -26,7 +27,7 @@ class ListNodesRequest implements RequestInterface
     /**
      * @return array|null
      */
-    public function getParams(): ?array
+    public function getParams(): ?string
     {
         return null;
     }
@@ -40,6 +41,7 @@ class ListNodesRequest implements RequestInterface
         $result = new NodeList();
         foreach ($response['data'] as $nodeConfig) {
             $node = new Node();
+            $node->setLinodeId($nodeConfig['id']);
             $node->setIps($nodeConfig['ipv4']);
             $node->setLabel($nodeConfig['label']);
             $node->setRegion($nodeConfig['region']);

@@ -2,7 +2,7 @@
 
 namespace Megawilddaddy\Linode;
 
-class NodeList implements \ArrayAccess
+class NodeList implements \ArrayAccess, \IteratorAggregate
 {
     /**
      * @var Node[]
@@ -21,12 +21,18 @@ class NodeList implements \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
+        $offset = $offset === null ? count($this->nodes) : $offset;
         $this->nodes[$offset] = $value;
     }
 
     public function offsetUnset($offset)
     {
         unset($this->nodes[$offset]);
+    }
+
+    public function getIterator()
+    {
+        return $this->nodes;
     }
 
     public function getNodeByIp($ip): ?Node
