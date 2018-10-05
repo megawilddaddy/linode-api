@@ -1,0 +1,24 @@
+{
+    "name": "megawilddaddy/linode-api",
+    "type": "php",
+    "description": "Api to mainpulate linode virtual machines",
+    "keywords": ["linode", "linode api"],
+    "license": "MIT",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Vasily Sokolov",
+            "email": "megawilddaddy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Megawilddaddy\\Linode\\": ""
+        }
+    },
+    "target-dir": "Megawilddaddy/Linode",
+    "require": {
+        "php": ">=7.1"
+    },
+    "minimum-stability": "stable"
+}
